@@ -1,0 +1,66 @@
+---
+title: "massachauseets incoime"
+author: Rishi Bethina
+execute:
+    echo: FALSE
+    message: FALSE
+    warning: FALSE
+---
+
+```{r}
+# Load required libraries
+library(tidycensus)
+library(tidyverse)
+library(tigris)
+library(sf)
+options(tigris_use_cache = TRUE)
+
+# Set your Census API Key (only run once; replace with your own key)
+# Get one from: https://api.census.gov/data/key_signup.html
+census_api_key("535874c422ba4b0ffc0fbba97fa3f19762289f22", install = TRUE, overwrite = TRUE)
+
+# Variable for median household income
+income_var <- "B19013_001"
+
+# Get 2021 ACS 5-year median income data by census tract in Massachusetts
+ma_income <- get_acs(
+  geography = "tract",
+  variables = income_var,
+  state = "MA",
+  year = 2021,
+  geometry = TRUE
+)
+
+# Clean the data
+ma_income_clean <- ma_income %>%
+  rename(
+    median_income = estimate,
+    tract_name = NAME
+  )# Preview the data
+glimpse(ma_income_clean)
+
+# Optional: Quick map using ggplot
+ggplot(ma_income_clean) +
+  geom_sf(aes(fill = median_income), color = NA) +
+  scale_fill_viridis_c(option = "plasma", na.value = "grey80") +
+  labs(
+    title = "Median Household Income by Census Tract in Massachusetts (2021)",
+    fill = "Income ($)"
+  ) +
+  theme_minimal()
+```
+
+
+```{r}
+# Get median household income by census tract for Massachusetts
+ma_income <- get_acs(
+  geography = "tract",
+  variables = "B19013_001",  # Median household income variable
+  state = "MA",
+  year = 2022,  # Most recent 5-year ACS data
+  geometry = TRUE  # Include spatial data if you want to map it
+)
+
+# View the data
+head(ma_income)
+```
