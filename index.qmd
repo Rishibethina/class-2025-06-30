@@ -17,7 +17,7 @@ options(tigris_use_cache = TRUE)
 
 # Set your Census API Key (only run once; replace with your own key)
 # Get one from: https://api.census.gov/data/key_signup.html
-census_api_key("535874c422ba4b0ffc0fbba97fa3f19762289f22", install = TRUE, overwrite = TRUE)
+#census_api_key("535874c422ba4b0ffc0fbba97fa3f19762289f22", install = TRUE, overwrite = TRUE)
 
 # Variable for median household income
 income_var <- "B19013_001"
