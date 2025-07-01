@@ -142,9 +142,6 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "535874c422ba4b0ffc0fbba97fa3f19762289f22"</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,620
 Columns: 6
 $ GEOID         &lt;chr&gt; "25025050200", "25023540103", "25025100500", "2500565220…
@@ -261,7 +258,7 @@ Geodetic CRS:  NAD83
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/Rishibethina\.github\.io\/class-2025-06-30\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
